@@ -53,6 +53,8 @@ export default siteConfig({
   giscusCategory: 'Comment',
   giscusCategoryId: 'DIC_kwDOME5Xbs4Cf4Aw',
 
+  isSearchEnabled: false,
+
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
   //navigationStyle: 'default'
