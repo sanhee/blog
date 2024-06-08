@@ -2,19 +2,19 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: 'Post-bbb3e003a1d747e8a52161dde44398dd',
+  rootNotionPageId: 'bbb3e003a1d747e8a52161dde44398dd',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: '개발산발',
+  name: '공부해서 누굴 주자',
   domain: 'dev.sanhee.day',
   author: '산희',
 
   // open graph metadata (optional)
-  description: '개발산발',
+  description: '백엔드 개발자 히스토리',
 
   // social usernames (optional)
   //twitter: '',
@@ -62,15 +62,15 @@ export default siteConfig({
   navigationLinks: [
     {
       title: 'Post',
-      pageId: 'Post-bbb3e003a1d747e8a52161dde44398dd'
+      pageId: 'bbb3e003a1d747e8a52161dde44398dd'
     },
     {
       title: 'TIL',
-      pageId: 'TIL-3e35e92d1e9d4a22a02d1ba027f65402'
+      pageId: '3e35e92d1e9d4a22a02d1ba027f65402'
     },
     {
       title: 'About',
-      pageId: 'About-e0ab42637eba4840afed6b7e9ddc819c'
+      pageId: 'e0ab42637eba4840afed6b7e9ddc819c'
     }
   ]
 })
