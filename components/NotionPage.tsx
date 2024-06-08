@@ -29,6 +29,8 @@ import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 import Giscus from '@giscus/react';
 import { log } from 'console'
+import { useEffect } from 'react';
+import mermaid from 'mermaid';
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -175,6 +177,31 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const isLiteMode = lite === 'true'
 
   const { isDarkMode } = useDarkMode()
+  const [hasMounted, setHasMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
+  // Handle mermaid rendering
+  React.useEffect(() => {
+    if (hasMounted) {
+      setTimeout(() => {
+        mermaid.initialize({ startOnLoad: false })
+        const mermaidBlocks = document.querySelectorAll('.notion-code.language-mermaid')
+        console.log("mermaidBlocks: " + mermaidBlocks.length)
+        mermaidBlocks.forEach(block => {
+          const code = block.textContent
+          const container = document.createElement('div')
+          container.classList.add('mermaid')
+          container.innerHTML = code
+          block.parentNode.replaceChild(container, block)
+          mermaid.init(undefined, container)
+        })
+      }, 3000) // 3초 후에 Mermaid 렌더링 시도
+    }
+  }, [hasMounted, recordMap])
+
 
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
