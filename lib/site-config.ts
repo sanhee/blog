@@ -33,6 +33,11 @@ export interface SiteConfig {
 
   navigationStyle?: types.NavigationStyle
   navigationLinks?: Array<NavigationLink>
+
+  giscusGitHubRepo: string | null
+  giscusRepoId: string | null
+  giscusCategory: string | null
+  giscusCategoryId: string | null
 }
 
 export interface NavigationLink {

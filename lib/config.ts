@@ -112,12 +112,18 @@ export const navigationLinks: Array<NavigationLink | null> = getSiteConfig(
 // Optional site search
 export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
 
+// comment
+
+export const giscusGitHubRepo = getSiteConfig('giscusGitHubRepo', null) as `${string}/${string}` | null;
+export const giscusRepoId: string | null = getSiteConfig('giscusRepoId', null) as `${string}/${string}` | null;
+export const giscusCategory: string | null = getSiteConfig('giscusCategory', null) as `${string}/${string}` | null;
+export const giscusCategoryId: string | null = getSiteConfig('giscusCategoryId', null) as `${string}/${string}` | null;
+
 // ----------------------------------------------------------------------------
 
 // Optional redis instance for persisting preview images
 export const isRedisEnabled: boolean =
   getSiteConfig('isRedisEnabled', false) || !!getEnv('REDIS_ENABLED', null)
-
 // (if you want to enable redis, only REDIS_HOST and REDIS_PASSWORD are required)
 // we recommend that you store these in a local `.env` file
 export const redisHost: string | null = getEnv('REDIS_HOST', null)

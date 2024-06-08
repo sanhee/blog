@@ -27,6 +27,8 @@ import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
+import Giscus from '@giscus/react';
+import { log } from 'console'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -238,6 +240,27 @@ export const NotionPage: React.FC<types.PageProps> = ({
     block
   )
 
+
+  let comments: React.ReactNode = null
+
+  if (isBlogPost && config.giscusGitHubRepo) {
+    comments = (
+      <Giscus
+        repo={config.giscusGitHubRepo}
+        repoId={config.giscusRepoId}
+        category={config.giscusCategory}
+        categoryId={config.giscusCategoryId}
+        mapping="og:title"
+        reactionsEnabled="1"
+        emitMetadata="0"
+        inputPosition="top"
+        theme={isDarkMode ? 'dark' : 'light'}
+        loading="eager"
+        lang="ko"
+      />
+    );
+  }
+
   const socialDescription =
     getPageProperty<string>('Description', block, recordMap) ||
     config.description
@@ -279,9 +302,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
         footer={footer}
+        pageFooter={comments}
       />
-
-      <GitHubShareButton />
     </>
   )
 }
